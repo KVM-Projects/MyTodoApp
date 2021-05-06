@@ -12,8 +12,8 @@ class Todo(db.Model):
     desc = db.Column(db.String(500), nullable = False)
     datec = db.Column(db.DateTime, default = datetime.utcnow)
 
-    def __repr__(self):
-        return f"{self.sno} - {self.title}"
+    # def __repr__(self):
+        # return f"{self.sno} - {self.title}"
 
 @app.route('/', methods = ['GET', 'POST'])
 def hw():
@@ -33,7 +33,7 @@ def delete(sno):
     todo = Todo.query.filter_by(sno=sno).first()
     db.session.delete(todo)
     db.session.commit()
-    return redirect('http://127.0.0.1:5000/')
+    return redirect('/')
 
 
 @app.route('/update/<int:sno>', methods = ['GET','POST'])
@@ -46,7 +46,7 @@ def update(sno):
         todo.desc = desc
         db.session.add(todo)
         db.session.commit()
-        return redirect('http://127.0.0.1:5000/')
+        return redirect('/')
 
     todo = Todo.query.filter_by(sno=sno).first()
     return render_template('update.html',todo=todo)
