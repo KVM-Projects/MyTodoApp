@@ -33,13 +33,6 @@ def hw():
     return render_template('index.html', alltodos=alltodo)
 
 
-@app.route('/delete/<int:sno>')
-def delete(sno):
-    todo = Todo.query.filter_by(sno=sno).first()
-    db.session.delete(todo)
-    db.session.commit()
-    return redirect('/')
-
 
 @app.route('/update/<int:sno>', methods = ['GET','POST'])
 def update(sno):
