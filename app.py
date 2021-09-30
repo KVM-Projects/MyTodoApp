@@ -15,6 +15,14 @@ class Todo(db.Model):
     # def __repr__(self):
         # return f"{self.sno} - {self.title}"
 
+@app.route('/search', methods = ['GET', 'POST'])
+def search():
+    bar = ''
+    if request.method == 'POST' and 'bar' in request.form:
+        bar = request.form['bar']
+    alltodo = Todo.query.filter_by(title=bar).all()
+    return render_template('index.html', alltodos=alltodo)
+
 @app.route('/', methods = ['GET', 'POST'])
 def hw():
     if request.method == 'POST':
