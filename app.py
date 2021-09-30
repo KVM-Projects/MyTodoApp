@@ -10,7 +10,7 @@ class Todo(db.Model):
     sno = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(200), nullable = False)
     desc = db.Column(db.String(500), nullable = False)
-    datec = db.Column(db.DateTime, default = datetime.now)
+    datec = db.Column(db.DateTime, default = datetime.now())
 
 @app.route('/searchbar', methods = ['GET', 'POST'])
 def search():
