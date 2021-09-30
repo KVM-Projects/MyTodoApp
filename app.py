@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import date
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
@@ -10,7 +10,7 @@ class Todo(db.Model):
     sno = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(200), nullable = False)
     desc = db.Column(db.String(500), nullable = False)
-    datec = db.Column(db.DateTime, default = datetime.now())
+    datec = db.Column(db.DateTime, default = date.today())
 
 @app.route('/searchbar', methods = ['GET', 'POST'])
 def search():
