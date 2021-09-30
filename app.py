@@ -12,10 +12,7 @@ class Todo(db.Model):
     desc = db.Column(db.String(500), nullable = False)
     datec = db.Column(db.DateTime, default = datetime.utcnow)
 
-    # def __repr__(self):
-        # return f"{self.sno} - {self.title}"
-
-@app.route('/search', methods = ['GET', 'POST'])
+@app.route('/searchbar', methods = ['GET', 'POST'])
 def search():
     bar = ''
     if request.method == 'POST' and 'bar' in request.form:
